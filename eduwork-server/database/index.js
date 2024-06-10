@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
-const { dbHost, dbPort, dbName, dbPass, dbUser } = require("../app/config");
+const { mongoCluster } = require("../app/config");
 
-mongoose.connect(
-  `mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?authSource=admin`
-);
+// mongoose.connect(
+//   `mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?authSource=admin`
+// );
+
+mongoose.connect(`${mongoCluster}`);
+
 const db = mongoose.connection;
 
 module.exports = db;

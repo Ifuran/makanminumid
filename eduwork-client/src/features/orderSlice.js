@@ -31,7 +31,6 @@ export const addOrder = createAsyncThunk(
         },
       }
     );
-    console.log(response.data);
     return response.data;
   }
 );

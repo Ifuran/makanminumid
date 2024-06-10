@@ -95,7 +95,6 @@ const ManageProducts = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      console.log(editedProduct);
       await dispatch(updateProduct(editedProduct));
       await dispatch(
         getProducts({
@@ -123,7 +122,6 @@ const ManageProducts = () => {
         tag,
         image,
       };
-      console.log(productData);
       await dispatch(addProduct(productData));
       await dispatch(
         getProducts({
@@ -203,6 +201,7 @@ const ManageProducts = () => {
 
   const handleFilter = async (e) => {
     e.preventDefault();
+    setSkip(0);
     dispatch(updateFilters({ selectedCategory, selectedTags, searchTerm }));
     await dispatch(
       getProducts({ skip, selectedCategory, selectedTags, searchTerm: "" })

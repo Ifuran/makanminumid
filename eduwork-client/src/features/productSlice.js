@@ -15,23 +15,10 @@ export const getProduct = createAsyncThunk(
   }
 );
 
-// export const getProducts = createAsyncThunk(
-//   "product/getProducts",
-//   async ({ skip, selectedCategory, selectedTags, searchTerm }) => {
-//     const tagsQueryString = selectedTags
-//       .map((tag) => `tags[]=${tag}`)
-//       .join("&");
-//     const response = await axios.get(
-//       `http://localhost:3000/api/products?skip=${skip}&category=${selectedCategory}&${tagsQueryString}&q=${searchTerm}`
-//     );
-//     return response.data;
-//   }
-// );
-
 export const getProducts = createAsyncThunk(
   "product/getProducts",
   async ({ skip }, { getState }) => {
-    const { filters } = getState().product; // Mengambil filter dari state
+    const { filters } = getState().product;
     const { selectedCategory, selectedTags, searchTerm } = filters;
 
     const tagsQueryString = selectedTags
@@ -66,7 +53,6 @@ export const addProduct = createAsyncThunk(
         },
       }
     );
-    console.log(response.data);
     return response.data;
   }
 );
@@ -93,7 +79,6 @@ export const updateProduct = createAsyncThunk(
         },
       }
     );
-    console.log(response.data);
     return response.data;
   }
 );

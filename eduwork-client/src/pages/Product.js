@@ -93,6 +93,7 @@ const Product = () => {
 
   const handleFilter = async (e) => {
     e.preventDefault();
+    setSkip(0);
     dispatch(updateFilters({ selectedCategory, selectedTags, searchTerm }));
     await dispatch(
       getProducts({ skip, selectedCategory, selectedTags, searchTerm: "" })

@@ -6,7 +6,7 @@ import {
 import axios from "axios";
 
 export const getTags = createAsyncThunk("tag/getTags", async () => {
-  const response = await axios.get("http://localhost:3000/api/tags");
+  const response = await axios.get("https://makanminumid.vercel.app/api/tags");
   return response.data;
 });
 

@@ -25,7 +25,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 // Decode token
@@ -53,7 +53,7 @@ app.use(
 // homepage
 app.use("/", (req, res) => {
   res.render("index", {
-    title: "Learn MERN Stack with Ifuran",
+    title: "MakanMinumID Request API by Ifuran",
   });
 });
 

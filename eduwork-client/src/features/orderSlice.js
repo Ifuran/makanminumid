@@ -3,11 +3,14 @@ import axios from "axios";
 
 export const getOrder = createAsyncThunk("order/getOrder", async () => {
   const userToken = localStorage.getItem("token");
-  const response = await axios.get(`http://localhost:3000/api/order`, {
-    headers: {
-      Authorization: `Bearer ${userToken}`,
-    },
-  });
+  const response = await axios.get(
+    `https://makanminum-server.vercel.app/api/order`,
+    {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    }
+  );
   return response.data;
 });
 
@@ -18,7 +21,7 @@ export const addOrder = createAsyncThunk(
     localStorage.removeItem("cart");
 
     const response = await axios.post(
-      `http://localhost:3000/api/order`,
+      `https://makanminum-server.vercel.app/api/order`,
       {
         delivery_fee,
         delivery_address,

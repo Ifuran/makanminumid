@@ -8,7 +8,9 @@ import axios from "axios";
 export const getCategories = createAsyncThunk(
   "category/getCategories",
   async () => {
-    const response = await axios.get("http://localhost:3000/api/category");
+    const response = await axios.get(
+      "https://makanminum-server.vercel.app/api/category"
+    );
     return response.data;
   }
 );

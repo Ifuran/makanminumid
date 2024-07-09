@@ -6,7 +6,7 @@ export const getInvoice = createAsyncThunk(
   async (orderId) => {
     const userToken = localStorage.getItem("token");
     const response = await axios.get(
-      `http://localhost:3000/api/invoice/${orderId}`,
+      `https://makanminum-server.vercel.app/api/invoice/${orderId}`,
       {
         headers: {
           Authorization: `Bearer ${userToken}`,

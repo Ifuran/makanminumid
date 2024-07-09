@@ -6,11 +6,14 @@ import {
 import axios from "axios";
 
 export const registerUser = createAsyncThunk("user/register", async (data) => {
-  const response = await axios.post("http://localhost:3000/auth/register", {
-    full_name: data.fullName,
-    email: data.email,
-    password: data.password,
-  });
+  const response = await axios.post(
+    "https://makanminum-server.vercel.app/auth/register",
+    {
+      full_name: data.fullName,
+      email: data.email,
+      password: data.password,
+    }
+  );
   return response.data;
 });
 
@@ -18,7 +21,7 @@ export const loginUser = createAsyncThunk(
   "user/loginUser",
   async (userCredentials) => {
     const { data } = await axios.post(
-      "http://localhost:3000/auth/login",
+      "https://makanminum-server.vercel.app/auth/login",
       userCredentials
     );
     if (data.token) {
@@ -30,11 +33,14 @@ export const loginUser = createAsyncThunk(
 
 export const getUser = createAsyncThunk("user/getUser", async () => {
   const userToken = localStorage.getItem("token");
-  const response = await axios.get("http://localhost:3000/auth/profile", {
-    headers: {
-      authorization: `Bearer ${userToken}`,
-    },
-  });
+  const response = await axios.get(
+    "https://makanminum-server.vercel.app/auth/profile",
+    {
+      headers: {
+        authorization: `Bearer ${userToken}`,
+      },
+    }
+  );
   return response.data;
 });
 
@@ -43,7 +49,7 @@ export const logoutUser = createAsyncThunk(
   async (userCredentials) => {
     const userToken = localStorage.getItem("token");
     const response = await axios.post(
-      "http://localhost:3000/auth/logout",
+      "https://makanminum-server.vercel.app/auth/logout",
       {
         email: userCredentials.email,
         password: userCredentials.email,

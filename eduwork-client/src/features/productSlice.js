@@ -9,7 +9,7 @@ export const getProduct = createAsyncThunk(
   "product/getProduct",
   async (productId) => {
     const response = await axios.get(
-      `http://localhost:3000/api/products/${productId}`
+      `https://makanminum-server.vercel.app/api/products/${productId}`
     );
     return response.data;
   }
@@ -26,7 +26,7 @@ export const getProducts = createAsyncThunk(
       .join("&");
 
     const response = await axios.get(
-      `http://localhost:3000/api/products?skip=${skip}&category=${selectedCategory}&${tagsQueryString}&q=${searchTerm}`
+      `https://makanminum-server.vercel.app/api/products?skip=${skip}&category=${selectedCategory}&${tagsQueryString}&q=${searchTerm}`
     );
     return response.data;
   }
@@ -37,7 +37,7 @@ export const addProduct = createAsyncThunk(
   async (dataProduct) => {
     const userToken = localStorage.getItem("token");
     const response = await axios.post(
-      `http://localhost:3000/api/products`,
+      `https://makanminum-server.vercel.app/api/products`,
       {
         name: dataProduct.name,
         description: dataProduct.description,
@@ -63,7 +63,7 @@ export const updateProduct = createAsyncThunk(
     const userToken = localStorage.getItem("token");
     const tagNames = dataProduct.tags.map((tag) => tag.name);
     const response = await axios.put(
-      `http://localhost:3000/api/products/${dataProduct._id}`,
+      `https://makanminum-server.vercel.app/api/products/${dataProduct._id}`,
       {
         name: dataProduct.name,
         description: dataProduct.description,
@@ -88,7 +88,7 @@ export const deleteProduct = createAsyncThunk(
   async (productId) => {
     const userToken = localStorage.getItem("token");
     const response = await axios.delete(
-      `http://localhost:3000/api/products/${productId}`,
+      `https://makanminum-server.vercel.app/api/products/${productId}`,
       {
         headers: {
           authorization: `Bearer ${userToken}`,

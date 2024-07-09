@@ -45,7 +45,7 @@ export const getKelurahan = createAsyncThunk(
 export const getAddress = createAsyncThunk("address/getAddress", async () => {
   const userToken = localStorage.getItem("token");
   const response = await axios.get(
-    `http://localhost:3000/api/delivery-address`,
+    `https://makanminum-server.vercel.app/api/delivery-address`,
     {
       headers: {
         Authorization: `Bearer ${userToken}`,
@@ -60,7 +60,7 @@ export const addAddress = createAsyncThunk(
   async (address) => {
     const userToken = localStorage.getItem("token");
     const response = await axios.post(
-      `http://localhost:3000/api/delivery-address`,
+      `https://makanminum-server.vercel.app/api/delivery-address`,
       {
         name: address.name,
         provinsi: address.provinsi,
@@ -85,7 +85,7 @@ export const updateAddress = createAsyncThunk(
   async (address) => {
     const userToken = localStorage.getItem("token");
     const response = await axios.put(
-      `http://localhost:3000/api/delivery-address/${address._id}`,
+      `https://makanminum-server.vercel.app/api/delivery-address/${address._id}`,
       {
         name: address.name,
         provinsi: address.provinsi,
